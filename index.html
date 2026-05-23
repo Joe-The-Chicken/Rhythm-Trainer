@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/abcjs@6.0.0/dist/abcjs-basic-min.js"></script>
+        <script type="module" src="src/main.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+        <title>Rhythm Trainer</title>
+    </head>
+    <body>
+        <div class="box">
+            <h1>SIGHTREADING PRACTICE</h1>
+            <div id="container"></div>
+            <div id="controls">
+                <button id="new" class="regular-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
+                        <rect x="10" y="4" width="4" height="16"></rect>
+                        <rect x="4" y="10" width="16" height="4"></rect>
+                    </svg>
+                </button>
+                <button id="start" class="metronome-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
+                        <polygon points="8,5 19,12 8,19"></polygon>
+                    </svg>
+                </button>
+                <button id="pause" class="metronome-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
+                        <rect x="6" y="5" width="4" height="14"></rect>
+                        <rect x="14" y="5" width="4" height="14"></rect>
+                    </svg>
+                </button>
+                
+                <button id="reset" class="metronome-button">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3" stroke="#F7F3E3" stroke-width="1">
+                        <path d="M12 5V2L7 6.5L12 11V8c2.76 0 5 2.24 5 5s-2.24 5-5 5
+                                -5-2.24-5-5H5c0 3.87 3.13 7 7 7s7-3.13 7-7-3.13-7-7-7z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="settings-menu">
+            <div class="dropdown">
+                <div class="dropdown-header">BPM</div>
+                <div class="dropdown-content">
+                    <div class="bpm-box">
+                        <div class="bpm-label">BPM: <span id="bpm-value"></span></div>
+                        <input id="bpm-input" type="range" min="0" max="240" class="bpm-slider">
+                    </div>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <div class="dropdown-header">Time Signatures</div>
+                <div class="dropdown-content" id="ts-container"></div>
+            </div>
+
+            <div class="dropdown">
+                <div class="dropdown-header">Patterns</div>
+                <div class="dropdown-content" id="pattern-container"></div>
+            </div>
+        </div>
+
+    </body>
+</html>
