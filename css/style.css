@@ -76,6 +76,7 @@ h1 {
     color: #F7F3E3;
     margin: 0;
     letter-spacing: 0.5vw;
+    text-shadow: #2B2118 4px 4px 0.5px
 }
 
 button {
@@ -137,7 +138,7 @@ button:disabled {
     background: #F7F3E3;
     border-radius: 12px;
     box-shadow: 0 4px 12px #2b211880;
-    max-height: 60vh;
+    max-height: 50vh;
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
