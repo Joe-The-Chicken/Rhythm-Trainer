@@ -7,57 +7,98 @@
         <title>Rhythm Trainer</title>
     </head>
     <body>
-        <div class="box">
-            <h1>SIGHTREADING PRACTICE</h1>
-            <div id="container"></div>
-            <div id="controls">
-                <button id="new" class="regular-button">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
-                        <rect x="10" y="4" width="4" height="16"></rect>
-                        <rect x="4" y="10" width="16" height="4"></rect>
-                    </svg>
-                </button>
-                <button id="start" class="metronome-button">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
-                        <polygon points="8,5 19,12 8,19"></polygon>
-                    </svg>
-                </button>
-                <button id="pause" class="metronome-button">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
-                        <rect x="6" y="5" width="4" height="14"></rect>
-                        <rect x="14" y="5" width="4" height="14"></rect>
-                    </svg>
-                </button>
-                
-                <button id="reset" class="metronome-button">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3" stroke="#F7F3E3" stroke-width="1">
-                        <path d="M12 5V2L7 6.5L12 11V8c2.76 0 5 2.24 5 5s-2.24 5-5 5
-                                -5-2.24-5-5H5c0 3.87 3.13 7 7 7s7-3.13 7-7-3.13-7-7-7z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <div id="settings-menu">
-            <div class="dropdown">
-                <div class="dropdown-header">BPM</div>
-                <div class="dropdown-content">
-                    <div class="bpm-box">
-                        <div class="bpm-label">BPM: <span id="bpm-value"></span></div>
-                        <input id="bpm-input" type="range" min="0" max="240" class="bpm-slider">
-                    </div>
+        <div id="app">
+            <div class="box">
+                <h1>— RHYTHM TRAINER —</h1>
+                <div id="container"></div>
+                <div id="controls">
+                    <button id="new" class="regular-button">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
+                            <rect x="10" y="4" width="4" height="16"></rect>
+                            <rect x="4" y="10" width="16" height="4"></rect>
+                        </svg>
+                    </button>
+                    <div class="hotbar-separator"></div>
+                    <button id="start" class="metronome-button">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
+                            <polygon points="8,5 19,12 8,19"></polygon>
+                        </svg>
+                    </button>
+                    <button id="pause" class="metronome-button">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3">
+                            <rect x="6" y="5" width="4" height="14"></rect>
+                            <rect x="14" y="5" width="4" height="14"></rect>
+                        </svg>
+                    </button>
+                    <button id="reset" class="metronome-button">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3" stroke="#F7F3E3" stroke-width="1">
+                            <path d="M12 5V2L7 6.5L12 11V8c2.76 0 5 2.24 5 5s-2.24 5-5 5
+                                    -5-2.24-5-5H5c0 3.87 3.13 7 7 7s7-3.13 7-7-3.13-7-7-7z"/>
+                        </svg>
+                    </button>
+                    <div class="hotbar-separator"></div>
+                    <button id="settings" class="regular-button">
+                        <svg id='Settings_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+                            <g transform="matrix(1 0 0 1 12 12)" >
+                                <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: #F7F3E3; fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 9.6679688 2 L 9.1757812 4.5234375 C 8.3550224 4.8338012 7.5961042 5.2674041 6.9296875 5.8144531 L 4.5058594 4.9785156 L 2.1738281 9.0214844 L 4.1132812 10.707031 C 4.0445153 11.128986 4 11.558619 4 12 C 4 12.441381 4.0445153 12.871014 4.1132812 13.292969 L 2.1738281 14.978516 L 4.5058594 19.021484 L 6.9296875 18.185547 C 7.5961042 18.732596 8.3550224 19.166199 9.1757812 19.476562 L 9.6679688 22 L 14.332031 22 L 14.824219 19.476562 C 15.644978 19.166199 16.403896 18.732596 17.070312 18.185547 L 19.494141 19.021484 L 21.826172 14.978516 L 19.886719 13.292969 C 19.955485 12.871014 20 12.441381 20 12 C 20 11.558619 19.955485 11.128986 19.886719 10.707031 L 21.826172 9.0214844 L 19.494141 4.9785156 L 17.070312 5.8144531 C 16.403896 5.2674041 15.644978 4.8338012 14.824219 4.5234375 L 14.332031 2 L 9.6679688 2 z M 12 8 C 14.209 8 16 9.791 16 12 C 16 14.209 14.209 16 12 16 C 9.791 16 8 14.209 8 12 C 8 9.791 9.791 8 12 8 z" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </button>
                 </div>
             </div>
+            <div id="settings-menu">
+                <div class="dropdown">
+                    <div class="dropdown-header">Tempo</div>
+                    <div class="dropdown-content">
+                        <div class="bpm-box">
+                            <div class="bpm-label"><span id="bpm-value"></span> BPM - <span id="bpm-title"></span></div>
+                            <input id="bpm-input" type="range" min="0" max="240" class="bpm-slider">
+                        </div>
+                    </div>
+                </div>
 
-            <div class="dropdown">
-                <div class="dropdown-header">Time Signatures</div>
-                <div class="dropdown-content" id="ts-container"></div>
-            </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">Time Signatures</div>
+                    <div class="dropdown-content" id="ts-container"></div>
+                </div>
 
-            <div class="dropdown">
-                <div class="dropdown-header">Patterns</div>
-                <div class="dropdown-content" id="pattern-container"></div>
+                <div class="dropdown">
+                    <div class="dropdown-header">Patterns</div>
+                    <div class="dropdown-content" id="pattern-container"></div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="dropdown-header">Misc</div>
+                    <div class="dropdown-content" style="display: flex; flex-direction: column;">
+                        <label><input type="checkbox" id="metronome-audio">Play Metronome Audio</label>
+                        <label><input type="checkbox" id="rhythm-audio">Play Rhythm Audio</label>
+                        <label><input type="checkbox" id="accent-first-beat">Accent first beat of measure</label>
+                    </div>
+                </div>
+
+                <div id="settings-bottom">
+                    <button id="save" class="regular-button">
+                        <svg id='Save_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+                            <g transform="matrix(0.91 0 0 0.91 12 12)" >
+                                <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: #F7F3E3; fill-rule: nonzero; opacity: 1;" transform=" translate(-15, -15)" d="M 6 4 C 4.895 4 4 4.895 4 6 L 4 24 C 4 25.105 4.895 26 6 26 L 24 26 C 25.105 26 26 25.105 26 24 L 26 8 L 22 4 L 20 4 L 20 10 C 20 10.552 19.552 11 19 11 L 10 11 C 9.448 11 9 10.552 9 10 L 9 4 L 6 4 z M 16 4 L 16 9 L 18 9 L 18 4 L 16 4 z M 10 16 L 20 16 C 21.105 16 22 16.895 22 18 L 22 24 L 8 24 L 8 18 C 8 16.895 8.895 16 10 16 z" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </button>
+                    <button id="load" class="regular-button">
+                        <svg id='Import_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+                            <g transform="matrix(1 0 0 1 12 12)" >
+                                <path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: #F7F3E3; fill-rule: nonzero; opacity: 1;" transform=" translate(-10, -12)" d="M 8 2 C 6.895 2 6 2.895 6 4 L 6 11 L 11 11 L 11 8 L 15 12 L 11 16 L 11 13 L 6 13 L 6 20 C 6 21.105 6.895 22 8 22 L 16 22 C 17.105 22 18 21.105 18 20 L 18 4 C 18 2.895 17.105 2 16 2 L 8 2 z M 6 13 L 6 11 L 2 11 L 2 13 L 6 13 z" stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </button>
+                    <button id="reset-settings" class="regular-button">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="#F7F3E3" stroke="#F7F3E3" stroke-width="1">
+                            <path d="M12 5V2L7 6.5L12 11V8c2.76 0 5 2.24 5 5s-2.24 5-5 5
+                                    -5-2.24-5-5H5c0 3.87 3.13 7 7 7s7-3.13 7-7-3.13-7-7-7z"/>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
-
     </body>
 </html>

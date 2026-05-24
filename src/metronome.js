@@ -3,9 +3,15 @@ import { SONG } from "./generate-song.js";
 
 export var currentBeat = 0
 export var currentMeasure = 0;
+export var tempoModulation = 1;
 export var isPlaying = false;
 
+export function initSound() {
+    //no clue
+}
+
 const beat = new Audio("media/beat.wav");
+const soft_beat = new Audio("media/beat.wav"); soft_beat.volume = 0.15;
 const accent = new Audio("media/accent.wav");
 const snare = new Audio("media/snare.ogg");
 
@@ -62,21 +68,30 @@ function playClick(n32) {
 
     const accentPattern = chronologize(timeSignature.getAccentPattern());
 
-    if (currentBeat === 1) {
-        accent.currentTime = 0;
-        accent.play();
-    } else if (accentPattern.includes((currentBeat - 1) / 32)) {
-        beat.currentTime = 0;
-        beat.play();
+    if(settings.metronomeAudio) {
+        if (currentBeat === 1 && settings.accentFirstBeat) {
+            accent.currentTime = 0;
+            accent.play();
+        } else if (accentPattern.includes((currentBeat - 1) / 32)) {
+            beat.currentTime = 0;
+            beat.play();
+        } else if (currentBeat % (32 / timeSignature.bottom) === 1) {
+            soft_beat.currentTime = 0;
+            soft_beat.play();
+        }
+    }
+
+    if(currentBeat === 1) {
+        tempoModulation *= SONG[currentMeasure].tempoModulation ? SONG[currentMeasure].tempoModulation : 1;
     }
 
     if (currentMeasure >= SONG.length) {
         clearInterval(metronome);
         resetMetronome();
     } else {
-        playNote(currentMeasure, currentBeat);
+        if(settings.rhythmAudio) playNote(currentMeasure, currentBeat);
         selectNote(currentMeasure, getNoteAtBeat(currentMeasure, currentBeat / 32, true));
-        metronome = setTimeout(() => playClick(n32), n32);
+        metronome = setTimeout(() => playClick(n32), n32 * tempoModulation);
     }
 }
 

@@ -3,11 +3,12 @@ import { Note } from "./note.js";
 
 export class Measure {
 
-    constructor({ text, accentPattern }) {
+    constructor({ text, accentPattern, tempoModulation = 1 }) {
         const parsed = Measure.parseString(text);
         this.track = parsed.track;
         this.timeSignature = parsed.timeSignature;
         this.accentPattern = accentPattern;
+        this.tempoModulation = 1;
     }
 
     static parseString(text) {

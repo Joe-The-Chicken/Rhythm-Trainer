@@ -15,12 +15,29 @@ body {
     height: 100vh;
     width: 100vw;
     margin: 0;
-    padding: 0;
+    overflow: hidden;
+    background: #AF9164;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    background: #AF9164;
-    font-family: system-ui, sans-serif;
+    align-items: center;
+}
+
+body.settings-open .box {
+    transform: translateX(0);
+}
+
+body.settings-open #settings-menu {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .box {
@@ -32,6 +49,8 @@ body {
     align-items: center;
     flex-direction: column;
     gap: 2vh;
+    transition: transform 0.5s cubic-bezier(0.8, 0, 0.2, 1);
+    transform: translateX(25vw);
 }
 
 #container {
@@ -56,6 +75,7 @@ h1 {
     font-size: 3vw;
     color: #F7F3E3;
     margin: 0;
+    letter-spacing: 0.5vw;
 }
 
 button {
@@ -106,14 +126,26 @@ button:disabled {
     flex-direction: column;
     gap: 2vh;
     color: #2B2118;
-    overflow: scroll;
+    transition:
+        transform 0.5s cubic-bezier(0.8, 0, 0.2, 1),
+        opacity 0.5s cubic-bezier(0.8, 0, 0.2, 1);
+    transform: translateX(100%);
+    opacity: 0;
 }
 
 .dropdown {
     background: #F7F3E3;
     border-radius: 12px;
     box-shadow: 0 4px 12px #2b211880;
-    overflow: hidden;
+    max-height: 60vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: default;
+}
+
+.dropdown::-webkit-scrollbar {
+    display: none;
 }
 
 .dropdown-header {
@@ -301,6 +333,7 @@ button:disabled {
 .pattern-row {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 1vh;
     margin-bottom: 1.5vh;
     flex-wrap: wrap;
@@ -313,15 +346,15 @@ button:disabled {
     box-shadow: 0 4px 12px #2b211880;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.5vh;
     flex: 1;
-    min-width: 80px;
+    max-width: 6vw;
 }
 
 .pattern-preview {
     width: 100%;
     height: 80px;
-    background: white;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -354,6 +387,11 @@ button:disabled {
     cursor: pointer;
     margin-top: -4px;
     box-shadow: 0 0 6px #2b211880;
+    transition: all 0.1s cubic-bezier(1, 0.3, 0.3, 1);
+}
+
+.pattern-slider.zero::-webkit-slider-thumb {
+    background: #B3B6B7;
 }
 
 .pattern-slider::-moz-range-track {
@@ -369,4 +407,95 @@ button:disabled {
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 6px #2b211880;
+    transition: all 0.1s cubic-bezier(1, 0.3, 0.3, 1);
+}
+
+.pattern-slider.zero::-moz-range-thumb {
+    background: #B3B6B7;
+}
+
+#settings-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+    padding: 1vw;
+    margin-top: auto;
+}
+
+.hotbar-separator {
+    width: 5px;
+    height: 100%;
+    background-color: #2b211820;
+    border-radius: 2.5px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 1.5vw;
+    height: 1.5vw;
+    min-width: 22px;
+    min-height: 22px;
+
+    border: 2px solid #AF9164;
+    border-radius: 8px;
+
+    background: #F7F3E3;
+    box-shadow: 0 2px 8px #2b211840;
+
+    cursor: pointer;
+    position: relative;
+
+    transition:
+        background-color 0.2s cubic-bezier(1, 0.3, 0.3, 1),
+        transform 0.1s cubic-bezier(1, 0.3, 0.3, 1),
+        box-shadow 0.2s cubic-bezier(1, 0.3, 0.3, 1);
+}
+
+input[type="checkbox"]:hover {
+    background: #efe5cc;
+    transform: scale(1.05);
+}
+
+input[type="checkbox"]:active {
+    transform: scale(0.95);
+}
+
+input[type="checkbox"]:checked {
+    background: #AF9164;
+    border-color: #AF9164;
+}
+
+input[type="checkbox"]:checked::after {
+    content: "";
+    position: absolute;
+
+    left: 50%;
+    top: 45%;
+
+    width: 0.35vw;
+    height: 0.7vw;
+    min-width: 5px;
+    min-height: 10px;
+
+    border: solid #F7F3E3;
+    border-width: 0 3px 3px 0;
+
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+input[type="checkbox"]:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 3px #6F1A0730,
+        0 2px 8px #2b211840;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    color: #2B2118;
 }
