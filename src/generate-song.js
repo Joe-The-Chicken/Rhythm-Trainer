@@ -39,7 +39,8 @@ export function loadSong() {
     const SETTINGS = () => { return {
         scale: 0.8, 
         staffwidth: window.innerWidth * 0.45,
-        add_classes: true
+        add_classes: true,
+        selectionColor: "#000"
     } };
 
     var visual = window.ABCJS.renderAbc("container", ABC, SETTINGS());

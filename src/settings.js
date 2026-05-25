@@ -164,7 +164,6 @@ function loadSettingsMenu() {
         for(let i = 0; i < P_ROWS[count]; i++) {
             const thisLength = lengths[length];
             const thisPattern = patterns[thisLength][patternIndex];
-            console.log(thisLength, thisPattern, patternIndex);
 
             const patternBox = renderPattern(thisLength, thisPattern, patternIndex);
             rowDiv.appendChild(patternBox);
@@ -324,8 +323,6 @@ function renderPatternPreview(length, pattern, containerId) {
         scale: window.innerWidth * 0.0005,
         staffwidth: 0.1
     };
-
-    console.log(document.getElementById(containerId));
 
     window.ABCJS.renderAbc(containerId, abc, settings_abc);
 }

@@ -138,7 +138,7 @@ button:disabled {
     background: #F7F3E3;
     border-radius: 12px;
     box-shadow: 0 4px 12px #2b211880;
-    max-height: 50vh;
+    max-height: 45vh;
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
