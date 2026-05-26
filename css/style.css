@@ -76,7 +76,6 @@ h1 {
     color: #F7F3E3;
     margin: 0;
     letter-spacing: 0.5vw;
-    text-shadow: #2B2118 4px 4px 0.5px
 }
 
 button {
@@ -100,6 +99,11 @@ button:disabled {
     background-color: #B3B6B7;
     box-shadow: 0 0 12px #B3B6B780;
     cursor: default;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .selectedNote {
@@ -145,7 +149,7 @@ button:disabled {
     cursor: default;
 }
 
-.dropdown::-webkit-scrollbar {
+.dropdown::-webkit-scrollbar-track {
     display: none;
 }
 
